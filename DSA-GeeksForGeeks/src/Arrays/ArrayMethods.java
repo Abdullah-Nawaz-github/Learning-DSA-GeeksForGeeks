@@ -86,9 +86,24 @@ public class ArrayMethods {
 		return result;
 	}
 
+	// search, insert, and delete operations in an unsorted array
+	public static int search(int[] arr, int n, int key) {
+
+		// linear traversal through the array
+		for (int i = 0; i < n - 1; i++) {
+			if (arr[i] == key) {
+				return i;
+			}
+		}
+
+		// if key is not found
+		return -1;
+	}
+
 	public static void main(String[] args) {
 		int[] arr1 = { 1, 2, 3, 4, 5 };
-		System.out.println(Arrays.toString(ArrayMethods.rightRotate(arr1, 4)));
+//		System.out.println(Arrays.toString(ArrayMethods.search(arr1, arr1.length,2)));
+		System.out.println(ArrayMethods.search(arr1, arr1.length, 2));
 	}
 
 }
