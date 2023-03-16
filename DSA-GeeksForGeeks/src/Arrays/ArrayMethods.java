@@ -101,7 +101,7 @@ public class ArrayMethods {
 		return -1;
 	}
 
-	static int insertAtEnd(int arr[], int n, int key, int capacity) {
+	public static int insertAtEnd(int arr[], int n, int key, int capacity) {
 		if (n >= capacity)
 			return n;
 
@@ -110,10 +110,22 @@ public class ArrayMethods {
 		return (n + 1);
 	}
 
+	public static int[] insertElement(int arr[], int n, int element, int pos) {
+		int[] temp = new int[n + 1];
+		int count = 0;
+		for (int i = 0; i < pos; i++) {
+			temp[count++] = arr[i];
+		}
+		for (int i = pos + 1; i < temp.length; i++) {
+			temp[i] = arr[i - 1];
+		}
+		temp[pos] = element;
+		return temp;
+	}
+
 	public static void main(String[] args) {
-		int[] arr1 = { 1, 2, 3, 4, 5 };
-//		System.out.println(Arrays.toString(ArrayMethods.search(arr1, arr1.length,2)));
-		System.out.println(ArrayMethods.search(arr1, arr1.length, 2));
+		int[] arr1 = { 1, 2, 3, 4, 5 }; // 5
+		System.out.println(Arrays.toString(ArrayMethods.insertElement(arr1, arr1.length, 99, 3)));
 	}
 
 }
