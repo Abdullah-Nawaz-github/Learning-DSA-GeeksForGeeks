@@ -65,9 +65,30 @@ public class ArrayMethods {
 		return result;
 	}
 
+//	Given an array of integers arr[] of size N and an integer, the task is to rotate the array elements to the right by d positions.
+	public static int[] rightRotate(int[] arr, int d) {
+
+		// creating result array
+		int[] result = new int[arr.length];
+
+		// keeping track of index of result array
+		int k = 0;
+
+		// adding elements from the back of arr to front of result array
+		for (int i = arr.length - d; i < result.length; i++) {
+			result[k++] = arr[i];
+		}
+
+		// adding elements from the front of arr to back of result array
+		for (int i = 0; i < arr.length - d; i++) {
+			result[k++] = arr[i];
+		}
+		return result;
+	}
+
 	public static void main(String[] args) {
-		int[] arr1 = { 3, 4, 5, 6, 7, 1, 2 };
-		System.out.println(Arrays.toString(ArrayMethods.leftRotate(arr1, 2)));
+		int[] arr1 = { 1, 2, 3, 4, 5 };
+		System.out.println(Arrays.toString(ArrayMethods.rightRotate(arr1, 4)));
 	}
 
 }
