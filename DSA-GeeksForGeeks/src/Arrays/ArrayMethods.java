@@ -123,9 +123,37 @@ public class ArrayMethods {
 		return temp;
 	}
 
+	// delete and shift others to the left
+	static int[] deleteElement(int arr[], int n, int key) {
+
+		// create result array of n-1 length
+		int[] result = new int[n - 1];
+		int k = 0;
+
+		// find index of key
+		int index = 0;
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] == key)
+				index = i;
+		}
+
+		// add elements that appear before key to the result array
+		for (int i = 0; i < index; i++) {
+			result[i] = arr[i];
+			k++;
+		}
+
+		// add elements that appear after key to the result array
+		for (int i = index + 1; i < n; i++) {
+			result[k++] = arr[i];
+		}
+
+		return result;
+	}
+
 	public static void main(String[] args) {
 		int[] arr1 = { 1, 2, 3, 4, 5 }; // 5
-		System.out.println(Arrays.toString(ArrayMethods.insertElement(arr1, arr1.length, 99, 3)));
+		System.out.println(Arrays.toString(ArrayMethods.deleteElement(arr1, arr1.length, 2)));
 	}
 
 }
