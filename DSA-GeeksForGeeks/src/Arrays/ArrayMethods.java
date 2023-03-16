@@ -87,6 +87,7 @@ public class ArrayMethods {
 	}
 
 	// search, insert, and delete operations in an unsorted array
+
 	public static int search(int[] arr, int n, int key) {
 
 		// linear traversal through the array
@@ -98,6 +99,15 @@ public class ArrayMethods {
 
 		// if key is not found
 		return -1;
+	}
+
+	static int insertAtEnd(int arr[], int n, int key, int capacity) {
+		if (n >= capacity)
+			return n;
+
+		arr[n] = key;
+
+		return (n + 1);
 	}
 
 	public static void main(String[] args) {
