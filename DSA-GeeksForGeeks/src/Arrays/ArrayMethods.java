@@ -163,8 +163,6 @@ public class ArrayMethods {
 
 		// while loop
 		while (low <= high) {
-
-			// check if key is at midpoint
 			int mid = (low + high) / 2;
 			if (arr[mid] == key) {
 				index = mid;
@@ -174,15 +172,31 @@ public class ArrayMethods {
 			} else if (arr[mid] < key) {
 				low = mid + 1;
 			}
-
 		}
 
 		return index;
 	}
 
+	// Recursive binarySearch
+	static int binarySearch(int arr[], int low, int high, int key) {
+
+		if (high < low)
+			return -1;
+
+		int mid = (low + high) / 2;
+		if (key == arr[mid])
+			return mid;
+
+		if (key > arr[mid])
+			return binarySearch(arr, (mid + 1), high, key);
+
+		return binarySearch(arr, low, (mid - 1), key);
+
+	}
+
 	public static void main(String[] args) {
 		int[] arr1 = { 1, 2, 3, 4, 5 }; // 5
-		System.out.println(ArrayMethods.binarySearch(arr1, 8));
+		System.out.println(ArrayMethods.binarySearch(arr1, 0, arr1.length - 1, 2));
 	}
 
 }
