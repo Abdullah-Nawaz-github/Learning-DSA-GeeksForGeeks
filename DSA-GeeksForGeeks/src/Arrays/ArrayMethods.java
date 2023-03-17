@@ -177,8 +177,8 @@ public class ArrayMethods {
 		return index;
 	}
 
-	// Recursive binarySearch
-	static int binarySearch(int arr[], int low, int high, int key) {
+	// Recursive binarySearch O(log(n))
+	public static int binarySearch(int arr[], int low, int high, int key) {
 
 		if (high < low)
 			return -1;
@@ -194,9 +194,44 @@ public class ArrayMethods {
 
 	}
 
+	// Inserting in sorted Array, returns n+1 if successful O(N)
+	public static int insertSorted(int arr[], int n, int key, int capacity) {
+
+		// if number of elements exceeds capacity
+		if (n >= capacity)
+			return n;
+
+		// move towards front of the array and shift elements
+		int i;
+		for (i = n - 1; i >= 0 && arr[i] > key; i--) {
+			arr[i + 1] = arr[i];
+		}
+
+		arr[i + 1] = key;
+
+		return (n + 1);
+	}
+
+	// Deleting in sorted Array O(N)
+	public static int deleteElementSorted(int arr[], int n, int key) {
+
+		int position = binarySearch(arr, key); // can use binary search becasue array is sorted
+
+		if (position == -1) {
+			System.out.println("Element not found");
+			return n;
+		}
+
+		int i;
+		for (i = position; i < n - 1; i++)
+			arr[i] = arr[i + 1];
+
+		return n;
+	}
+
 	public static void main(String[] args) {
-		int[] arr1 = { 1, 2, 3, 4, 5 }; // 5
-		System.out.println(ArrayMethods.binarySearch(arr1, 0, arr1.length - 1, 2));
+		int[] arr1 = { 1, 2, 3, 4, 5, 0 }; // n=4, capacity=5
+
 	}
 
 }
