@@ -151,9 +151,38 @@ public class ArrayMethods {
 		return result;
 	}
 
+	// Search in a sorted Array should be done using binary search
+	public static int binarySearch(int arr[], int key) {
+
+		// declare and initialize index to be returned
+		int index = -1;
+
+		// declare and initialize low, mid, and high points
+		int low = 0;
+		int high = arr.length - 1;
+
+		// while loop
+		while (low <= high) {
+
+			// check if key is at midpoint
+			int mid = (low + high) / 2;
+			if (arr[mid] == key) {
+				index = mid;
+				break;
+			} else if (arr[mid] > key) {
+				high = mid - 1;
+			} else if (arr[mid] < key) {
+				low = mid + 1;
+			}
+
+		}
+
+		return index;
+	}
+
 	public static void main(String[] args) {
 		int[] arr1 = { 1, 2, 3, 4, 5 }; // 5
-		System.out.println(Arrays.toString(ArrayMethods.deleteElement(arr1, arr1.length, 2)));
+		System.out.println(ArrayMethods.binarySearch(arr1, 8));
 	}
 
 }
